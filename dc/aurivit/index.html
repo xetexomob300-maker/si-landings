@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>Aurivit® — Edina Uradna Stran Proizvajalca | Naročite Original</title>
+<meta name="description" content="Edina uradna stran izdelka Aurivit®. Originalen izdelek neposredno od proizvajalca, plačilo po povzetju, dostava po vsej Sloveniji.">
+<style>
+:root{
+  --accent:#1f6feb; --accent-dark:#0d47a1;
+  --ink:#0f1b2d; --muted:#5b6b80; --line:#e6ebf2;
+  --bg:#fff; --bg-soft:#f5f8fc; --bg-soft2:#eef4fb;
+  --ok:#12a150; --ok-bg:#e8f7ee; --danger:#e5484d; --danger-bg:#fdecec;
+  --gold:#f6a609; --gold-dark:#b98900;
+  --radius:16px; --shadow:0 10px 30px rgba(15,27,45,.08); --shadow-lg:0 20px 50px rgba(15,27,45,.14);
+  --maxw:1040px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img{max-width:100%; display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 18px}
+.section{padding:44px 0}
+@media(max-width:640px){.section{padding:32px 0}}
+h1,h2,h3{line-height:1.15; margin:0 0 .5em; letter-spacing:-.02em}
+h1{font-size:clamp(24px,4.6vw,40px); font-weight:800}
+h2{font-size:clamp(21px,3.4vw,30px); font-weight:800}
+h3{font-size:clamp(16px,2.2vw,20px); font-weight:700}
+p{margin:0 0 1em}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin-bottom:10px}
+.center{text-align:center}
+.muted{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; border:none; cursor:pointer;
+  font-family:inherit; font-weight:800; font-size:17px; padding:16px 28px; border-radius:14px; text-decoration:none;
+  transition:transform .12s ease, box-shadow .2s ease; text-align:center}
+.btn-primary{color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-dark)); box-shadow:0 10px 24px rgba(31,111,235,.35)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-cta{position:relative; overflow:hidden}
+.btn-cta::after{content:""; position:absolute; top:0; left:-120%; width:60%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg); animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-120%}100%{left:130%}}
+
+/* header */
+header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line)}
+.topbar{background:linear-gradient(90deg,var(--accent-dark),var(--accent)); color:#fff; font-size:12.5px; font-weight:600; text-align:center; padding:6px 12px}
+.top-inner{display:flex; align-items:center; justify-content:space-between; height:60px; gap:10px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; letter-spacing:-.02em; min-width:0}
+.logo .mark{width:36px; height:36px; border-radius:10px; flex:none; display:grid; place-items:center; font-size:24px; line-height:1;
+  background:#fff; border:1px solid var(--line)}
+.logo small{font-weight:600; font-size:11px; color:var(--muted); display:block; letter-spacing:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.vf{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--ok); background:var(--ok-bg);
+  border:1px solid #bfe9cf; padding:6px 11px; border-radius:999px; white-space:nowrap}
+@media(max-width:480px){.vf span{display:none} .vf{padding:7px}}
+
+/* hero */
+.hero{background:radial-gradient(1200px 500px at 80% -10%,rgba(31,111,235,.10),transparent 60%),linear-gradient(180deg,var(--bg-soft),#fff); padding:26px 0 28px}
+.hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px 32px; align-items:start}
+.hero-grid>#buy{grid-row:1/3; grid-column:2}
+.hero-grid>.scarcity{grid-column:1; margin-top:0}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr; gap:14px} .hero-grid>#buy{grid-row:auto; grid-column:1} .hero-grid>.scarcity{order:3} .hero{padding:12px 0 20px}}
+.badges-row{display:flex; flex-wrap:wrap; gap:7px; margin:0 0 12px}
+.pill{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; background:#fff; border:1px solid var(--line);
+  padding:6px 11px; border-radius:999px; box-shadow:0 2px 6px rgba(15,27,45,.04)}
+.pill.ok{color:var(--ok); border-color:#bfe9cf; background:var(--ok-bg)}
+.product-card{background:#fff; border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-lg); padding:16px; position:relative; text-align:center}
+@media(min-width:861px){.product-card>div{text-align:center}}
+.product-card .ribbon{display:inline-block; margin-bottom:6px; color:#fff; font-weight:800; font-size:13px; padding:7px 12px; border-radius:11px;
+  background:linear-gradient(135deg,var(--ok),#0b7a3b); box-shadow:0 6px 16px rgba(18,161,80,.35)}
+.product-card .disc-ribbon{position:absolute; top:14px; right:14px; z-index:2; background:linear-gradient(135deg,var(--danger),#c11); color:#fff; font-weight:800; font-size:13px; padding:7px 12px; border-radius:11px}
+.product-card img{margin:8px auto 6px; max-height:360px; width:auto; height:auto; object-fit:contain}   /* 18.09: фото крупнее; height:auto — иначе атрибут height сплющивает кадр */
+/* 18.09: на мобильных карточка в одну колонку — фото крупное по центру, бейдж и подпись под ним (было: две колонки, фото ~90 px) */
+@media(max-width:860px){.product-card{padding:12px 12px 10px; display:block; text-align:center} .product-card img{max-height:250px; max-width:100%; width:auto; height:auto; margin:4px auto 8px; display:block} .product-card .ribbon{position:static; display:inline-block; margin-bottom:6px} .product-card .disc-ribbon{top:10px; right:10px} .shotcap{font-size:12px}}
+.shotcap{font-size:12.5px; color:var(--muted); font-weight:600}
+.price-box{display:flex; align-items:baseline; gap:12px; margin:12px 0 4px; flex-wrap:wrap}
+.price-new{font-size:40px; font-weight:800; letter-spacing:-.03em; line-height:1; color:var(--danger); display:inline-block; transform-origin:left center;
+  animation:pricePulse 2.4s ease-in-out infinite}   /* 17.09: цена выделена цветом и мягкой пульсацией (решение пользователя) */
+@keyframes pricePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.price-new{animation:none}}
+.price-old{font-size:20px; color:var(--muted); text-decoration:line-through}
+.save-badge{background:var(--danger-bg); color:var(--danger); font-weight:800; font-size:13.5px; padding:5px 10px; border-radius:9px}
+.pricenote{font-size:12.5px; color:var(--muted); margin:0 0 12px}
+.sub-h{font-size:16.5px; color:var(--ink); font-weight:600; margin:-4px 0 12px; line-height:1.35}
+.save-abs{background:var(--ok-bg); color:var(--ok); font-weight:800; font-size:13.5px; padding:5px 10px; border-radius:9px}
+.answers{list-style:none; padding:0; margin:0 0 14px; display:grid; gap:5px}
+.answers li{font-size:14px; color:var(--ink); padding-left:22px; position:relative}
+.answers li::before{content:"✔"; position:absolute; left:0; color:var(--ok); font-weight:800}
+.answers li:empty{display:none}
+.steps4{margin:0 0 12px; padding:0 0 0 22px; font-size:13.5px; color:var(--muted); display:grid; gap:3px}
+.steps4 li::marker{color:var(--accent); font-weight:800}
+.steps4 li:empty{display:none}
+.phonewhy{font-size:11.5px; color:var(--muted); margin:-4px 0 10px; line-height:1.35}
+.phonewhy:empty,.sub-h:empty{display:none}
+.rv-dist{display:grid; gap:3px; min-width:170px; font-size:12px; color:var(--muted)}
+.rv-dist div{display:grid; grid-template-columns:22px 1fr 34px; align-items:center; gap:6px}
+.rv-dist i{display:block; height:6px; background:var(--gold); border-radius:99px}
+.rv-dist b{font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; text-align:right}
+.review .reply{margin-top:8px; padding:8px 10px; background:var(--bg-soft2); border-radius:8px; font-size:13px; color:var(--ink)}
+.review .reply b{display:block; font-size:11.5px; color:var(--muted); margin-bottom:2px}
+/* медальоны-«печати» (v4.1) */
+.medals{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:14px 0 0}
+@media(max-width:860px){.medals{gap:7px}
+  .medal{padding:9px 4px 8px} .medal svg{width:42px; height:42px} .medal.flag .fl{font-size:20px; line-height:42px; height:42px; top:9px}
+  .medal b{font-size:9.5px; letter-spacing:0}}
+@media(max-width:400px){.medals{gap:5px} .medal svg{width:34px; height:34px}
+  .medal.flag .fl{font-size:17px; line-height:34px; height:34px} .medal b{font-size:8.5px}}
+.medal.flag{position:relative}
+.medal.flag .fl{position:absolute; top:12px; left:50%; transform:translateX(-50%); font-size:26px; line-height:54px; height:54px; display:block; filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.medal{display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; background:#fff; border:1px solid #f1e3b8; border-radius:14px; padding:12px 8px 10px; box-shadow:0 4px 14px rgba(185,137,0,.10)}
+.medal svg{width:54px; height:54px; filter:drop-shadow(0 3px 6px rgba(185,137,0,.35))}
+.medal b{font-size:12px; line-height:1.25; color:var(--gold-dark); letter-spacing:.02em; text-transform:uppercase}
+.medal b:empty{display:none}
+/* бумаги-сертификаты (v4.1) */
+.certs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:14px auto 0; max-width:500px}
+@media(max-width:640px){.certs{gap:8px; max-width:300px}}
+.cert{position:relative; padding:0; border:none; background:#fdfaf3; border-radius:6px; overflow:hidden; cursor:zoom-in;
+  box-shadow:0 6px 18px rgba(15,27,45,.14); aspect-ratio:2/3; font-family:inherit; display:block; width:100%}
+.cert img{width:100%; height:100%; object-fit:cover; display:block}
+.cert .txt{position:absolute; inset:7% 9% 30%; display:flex; flex-direction:column; align-items:center; text-align:center;
+  color:#3a2c14; font-family:Georgia,"Times New Roman",serif}
+.cert .flag{font-size:clamp(14px,3.4vw,20px); line-height:1; margin-bottom:4px}
+.cert .t{font-size:clamp(8px,1.9vw,11px); font-weight:700; letter-spacing:.05em; text-transform:uppercase; line-height:1.25}
+.cert .rule{width:38%; height:1px; background:#b98900; opacity:.6; margin:5px 0 6px}
+.cert .p{font-size:clamp(6px,1.35vw,8px); line-height:1.4; color:#4a3a1c; overflow:hidden}
+.cert .prod{margin-top:auto; font-size:clamp(6.5px,1.4vw,8.5px); font-weight:700; font-style:italic; color:#6b4f14;
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.cert-lb{position:fixed; inset:0; z-index:120; background:rgba(10,16,26,.82); display:grid; place-items:center; padding:18px}
+.cert-lb[hidden]{display:none}
+.cert-lb .cert{max-width:min(420px,86vw); cursor:default; box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.cert-x{position:absolute; top:14px; right:16px; width:40px; height:40px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.9); font-size:24px; line-height:1; cursor:pointer; color:#0f1b2d}
+@media(max-width:640px){h1{font-size:22px} .pill{font-size:11px; padding:5px 9px} .badges-row{gap:5px; margin-bottom:8px} .pricenote{display:none} .form-card .sub{display:none} .price-box{margin:8px 0 10px} .price-new{font-size:34px}}
+
+/* form card */
+.form-card{background:#fff; border:2px solid var(--accent); border-radius:18px; padding:18px; color:var(--ink); box-shadow:var(--shadow)}
+.form-card h3{margin-bottom:2px; font-size:18px}
+/* 18.09: кнопка должна читаться как раскрывающийся элемент — рамка, подложка, круглая стрелка */
+.howq{display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; background:var(--bg-soft2); border:1.5px dashed var(--accent); border-radius:12px; padding:10px 12px 10px 14px; margin:0 0 12px; font:inherit; font-weight:700; font-size:15px; color:var(--accent); cursor:pointer; text-align:left}
+.howq .chev{flex:none; width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff; display:grid; place-items:center; font-size:14px; line-height:1; transition:transform .25s}
+.howq[aria-expanded="true"]{border-style:solid; border-radius:12px 12px 0 0; margin-bottom:0}
+.howq[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.howq[aria-expanded="true"]+.steps4{border:1.5px solid var(--accent); border-top:none; border-radius:0 0 12px 12px; padding:10px 12px 12px 34px; margin:0 0 12px; background:#fff}
+.steps4[hidden]{display:none}
+.form-card .sub{color:var(--muted); font-size:13.5px; margin-bottom:12px}
+.inp{width:100%; padding:14px 15px; border:1.5px solid #cfd8e3; border-radius:12px; font-size:16px; font-family:inherit; outline:none; margin-bottom:10px;
+  transition:border-color .15s, box-shadow .15s}
+.inp:focus{border-color:var(--accent); box-shadow:0 0 0 4px rgba(31,111,235,.12)}
+.inp.bad{border-color:var(--danger); box-shadow:0 0 0 4px rgba(229,72,77,.12)}
+.phone-field{display:flex; gap:8px; margin-bottom:10px}
+select.cty{appearance:auto; background:#fff; font-weight:600; color:var(--ink)}
+.phone-field .inp{margin-bottom:0; flex:1; min-width:0}
+.phone-field .p48{flex:none; display:flex; align-items:center; gap:4px; font-weight:800; font-size:15px; color:var(--ink); background:var(--bg-soft); border:1.5px solid #cfd8e3; border-radius:12px; padding:0 12px}
+.ph-err{display:none; font-size:12.5px; color:var(--danger); font-weight:600; margin:-4px 0 8px 2px}
+.phone-field.warn+ .ph-err{display:block;color:#b7791f}
+.phone-field.bad+ .ph-err{display:block;color:var(--danger)}
+.ph-other{display:inline-block; background:none; border:0; padding:2px 0; margin:-2px 0 8px 2px; font:inherit; font-size:15.5px; font-weight:600; color:#1a56db; text-decoration:underline; cursor:pointer; text-align:left}
+.ph-other.on{color:var(--ink); text-decoration:none}
+.ph-other:empty{display:none}
+.form-card .btn{width:100%; font-size:18px; padding:17px}
+.form-note{font-size:12.5px; color:var(--muted); text-align:center; margin:8px 0 0}
+.today-line{font-size:13px; font-weight:700; color:var(--ok); text-align:center; margin:10px 0 0}
+.today-line b{font-variant-numeric:tabular-nums}
+.ok-msg{display:none; background:var(--ok-bg); border-radius:14px; padding:20px 16px; text-align:center}
+.ok-msg .ok-big{width:56px; height:56px; margin:0 auto 10px; border-radius:50%; background:var(--ok); color:#fff; display:grid; place-items:center}
+.ok-msg b{color:var(--ok); font-size:17px; display:block; margin-bottom:6px}
+.ok-msg .ok-when{color:#0c6b36; font-size:14.5px; margin:0 0 8px}
+.ok-msg .ok-keep{color:var(--muted); font-size:13px; font-weight:600; margin:0}
+.sig{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:14px}
+.sig div{font-size:11.5px; line-height:1.25; font-weight:600; color:var(--ink); text-align:center; background:var(--bg-soft); border-radius:12px; padding:10px 4px}
+.sig svg{width:22px; height:22px; display:block; margin:0 auto 6px; color:var(--accent)}
+.fake-hint{display:block; text-align:center; margin-top:12px; font-size:13px; font-weight:700; color:var(--danger); text-decoration:none}
+
+/* scarcity */
+.scarcity{background:linear-gradient(135deg,#111827,#1f2937); color:#fff; border-radius:var(--radius); padding:16px 18px; display:flex;
+  align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; box-shadow:var(--shadow); margin-top:18px}
+.scarcity.kept{background:linear-gradient(135deg,#0b7a3b,#12a150)} .scarcity.kept .stock-line b{color:#fff}
+.scarcity .left{display:flex; align-items:center; gap:12px; font-weight:700; font-size:14.5px}
+.timer{display:flex; gap:6px}
+.timer .unit{background:rgba(255,255,255,.12); border-radius:10px; padding:7px 10px; text-align:center; min-width:52px}
+.timer .num{font-size:22px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums}
+.timer .ms{min-width:44px; opacity:.85} .timer .ms .num{color:#ff8a80}
+.timer .lab{font-size:10px; opacity:.7; text-transform:uppercase; letter-spacing:.06em}
+.stock-line{font-size:13.5px; min-width:190px}
+.stock-line b{color:#ffd27a; display:inline-block; font-variant-numeric:tabular-nums; transition:transform .2s}
+.stock-line b.pop{animation:pop .9s ease}
+@keyframes pop{0%{transform:scale(1);color:#ffd27a}30%{transform:scale(1.45);color:#ff6b6b}100%{transform:scale(1);color:#ffd27a}}
+.stockbar{height:7px; background:rgba(255,255,255,.15); border-radius:99px; margin-top:6px; overflow:hidden; width:100%; max-width:220px}
+.stockbar>i{display:block; height:100%; background:linear-gradient(90deg,#f6a609,#e5484d); border-radius:99px; transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.sold-toast{position:fixed; left:12px; bottom:84px; z-index:70; background:#fff; color:var(--ink); border:1px solid var(--line); border-radius:14px;
+  box-shadow:var(--shadow-lg); padding:10px 14px; font-size:13px; display:flex; gap:10px; align-items:center; max-width:300px;
+  transform:translateY(20px); opacity:0; transition:all .4s; pointer-events:none}
+.sold-toast.show{transform:none; opacity:1}
+.sold-toast .av{width:30px; height:30px; border-radius:50%; background:var(--bg-soft2); color:var(--accent); font-weight:800; display:grid; place-items:center; flex:none}
+@media(min-width:821px){.sold-toast{bottom:20px}}
+
+/* seal */
+.apr{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:12px}
+.apr>div{display:flex; gap:10px; align-items:flex-start; background:#fff; border:1px solid #e3e9f1; border-radius:var(--radius); padding:12px 12px 11px}
+.apr svg{width:30px; height:30px; flex:none; margin-top:1px}
+.apr b{display:block; font-size:13.5px; line-height:1.25; color:var(--ink); margin-bottom:3px} .apr span{display:block; font-size:12px; line-height:1.35; color:var(--muted)}
+@media(max-width:860px){.apr{grid-template-columns:1fr 1fr; gap:8px} .apr>div{padding:10px} .apr svg{width:26px;height:26px}}
+@media(max-width:480px){.apr{grid-template-columns:1fr; gap:6px} .apr>div{padding:9px 11px; align-items:center} .apr b{font-size:13px; margin-bottom:1px} .apr span{font-size:11.5px}}
+.seal{display:flex; gap:14px; align-items:center; background:linear-gradient(180deg,#fffaf0,#fff4dc); border:1px solid #f0d9a4; border-radius:var(--radius); padding:14px 16px}
+.seal svg{width:52px; height:52px; flex:none}
+.seal b{display:block; font-size:15px; color:#6b4d00} .seal span{font-size:13px; color:#7a5f1a}
+
+/* alert */
+.alert{background:var(--danger-bg); border:1px solid #f6c9ca; border-radius:var(--radius); padding:20px 22px}
+.alert h2{color:var(--danger); display:flex; align-items:center; gap:10px; font-size:22px}
+.alert p{color:#6b2325; font-size:15px; margin-bottom:8px} .alert p:last-child{margin:0}
+
+/* comparison */
+.cmp-scroll{overflow-x:auto}
+.cmp{width:100%; border-collapse:separate; border-spacing:0; background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); min-width:520px}
+.cmp th,.cmp td{padding:13px 14px; text-align:left; font-size:14px; border-bottom:1px solid var(--line); vertical-align:top}
+.cmp thead th{background:var(--bg-soft); font-weight:800; font-size:13.5px}
+.cmp th.ok{color:var(--ok)} .cmp th.no{color:var(--danger)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp td:first-child{font-weight:700; white-space:nowrap}
+.cmp td:nth-child(2){color:#0c6b36} .cmp td:nth-child(3){color:#8a2b2e}
+@media(max-width:640px){.cmp{min-width:0} .cmp td:first-child{white-space:normal} .cmp th,.cmp td{padding:10px 9px; font-size:12.5px}}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px}
+@media(max-width:820px){.steps{grid-template-columns:1fr; gap:14px}}
+.step{position:relative; padding-left:58px; font-size:14.5px; color:#33425a}
+.step .n{position:absolute; left:0; top:0; width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-dark)); color:#fff;
+  display:grid; place-items:center; font-weight:800; font-size:18px; box-shadow:0 8px 18px rgba(31,111,235,.3)}
+
+/* guarantees */
+.guar{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px}
+@media(max-width:820px){.guar{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.guar{grid-template-columns:1fr}}
+.card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px 16px; box-shadow:var(--shadow)}
+.card .ic{width:46px; height:46px; border-radius:13px; display:grid; place-items:center; margin:0 auto 10px; background:var(--bg-soft2); color:var(--accent)}
+.card .ic svg{width:24px; height:24px}
+.card b{display:block; font-size:15px; margin-bottom:4px} .card span{font-size:13px; color:var(--muted)}
+.guar .card{text-align:center}
+
+/* delivery */
+.deliv{margin-top:18px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow)}
+.d-head{font-size:15px; margin-bottom:12px} .d-head b{margin-right:8px} .d-head span{color:var(--muted); font-size:13px; font-weight:600}
+.d-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+@media(max-width:720px){.d-row{grid-template-columns:1fr}}
+.d-row>div{display:flex; gap:10px; align-items:center; background:var(--bg-soft); border-radius:12px; padding:10px 12px}
+.d-row svg{width:30px; height:30px; flex:none; color:var(--accent)}
+.d-row b{display:block; font-size:14px} .d-row span{font-size:12.5px; color:var(--muted)}
+
+/* reviews */
+.rv-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px}
+.rv-score{display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted); font-weight:600}
+.rv-score b{font-size:26px; color:var(--ink)}
+.stars{color:var(--gold); font-size:15px; letter-spacing:1.5px}
+.reviews{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:820px){.reviews{grid-template-columns:1fr}}
+.review{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+.review.hid{display:none}
+.review .head{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.avatar{width:40px; height:40px; border-radius:50%; display:grid; place-items:center; font-weight:800; color:#fff; font-size:16px; flex:none; position:relative; overflow:hidden}
+.avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%}
+.review .name{font-weight:700; font-size:14.5px; display:flex; align-items:center; gap:6px} .review .name .src{width:15px; height:15px} .review .city{font-size:12px; color:var(--muted)}
+.review .verified{font-size:11.5px; color:var(--ok); font-weight:700; margin-left:auto; white-space:nowrap}
+.review p{margin:0; font-size:14px; color:#33425a} .review .stars{font-size:13px; margin-bottom:6px}
+.rv-more{display:block; margin:16px auto 0; background:#fff; border:1.5px solid var(--line); color:var(--ink); box-shadow:none; font-size:15px; padding:13px 26px}
+
+/* FAQ */
+.faq{max-width:760px; margin:18px auto 0}
+.q{background:#fff; border:1px solid var(--line); border-radius:14px; margin-bottom:10px; overflow:hidden}
+.q button{width:100%; text-align:left; background:none; border:none; padding:15px 18px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+  display:flex; justify-content:space-between; gap:14px; align-items:center; color:var(--ink)}
+.q .chev{transition:transform .25s; flex:none; color:var(--accent)}
+.q.open .chev{transform:rotate(180deg)}
+.q .ans{max-height:0; overflow:hidden; transition:max-height .3s ease; color:var(--muted); font-size:14.5px}
+.q .ans-inner{padding:0 18px 16px}
+
+/* final order */
+.order{background:radial-gradient(900px 400px at 15% 0%,rgba(31,111,235,.10),transparent 60%),linear-gradient(180deg,#0f1b2d,#16233a); color:#fff; border-radius:22px; padding:28px; box-shadow:var(--shadow-lg)}
+@media(max-width:640px){.order{padding:20px 16px}}
+.order-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center}
+@media(max-width:820px){.order-grid{grid-template-columns:1fr; gap:18px}}
+.order h2{color:#fff} .order .muted{color:#b7c3d6}
+.order .price-old{color:#93a4bd}
+.order ul.perks{list-style:none; padding:0; margin:14px 0 0}
+.order ul.perks li{display:flex; gap:10px; align-items:center; margin-bottom:8px; font-size:14.5px; color:#cdd8e8}
+.order ul.perks li svg{color:#5fe3a1; flex:none}
+.order .form-card{border-color:#fff}
+
+/* sticky */
+.sticky-cta{position:fixed; left:0; right:0; bottom:0; z-index:60; background:#fff; border-top:1px solid var(--line); box-shadow:0 -6px 20px rgba(15,27,45,.1);
+  padding:9px 14px; display:none; align-items:center; justify-content:space-between; gap:12px; transform:translateY(110%); transition:transform .3s}
+.sticky-cta.on{transform:none}
+.sticky-cta .p{font-weight:800; font-size:17px; line-height:1.1} .sticky-cta .p small{display:block; font-size:12px; color:var(--muted); font-weight:600; text-decoration:line-through}
+.sticky-cta .btn{padding:12px 18px; font-size:15px; flex:none}
+@media(max-width:820px){.sticky-cta{display:flex}}
+
+/* footer */
+footer{background:var(--bg-soft); border-top:1px solid var(--line); padding:28px 0 90px; font-size:13px; color:var(--muted)}
+@media(min-width:821px){footer{padding-bottom:28px}}
+.legal{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; font-size:12.5px; margin-bottom:14px}
+.legal b{color:var(--ink)}
+footer .links{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px}
+footer a{text-decoration:none; font-weight:600}
+.disclaimer{font-size:12px; color:#8493a8}
+body.free .disc,body:not(.free) .nodisc{display:none}
+/* 13.10: мобильный первый экран — заголовок и цена выше фото, фото компактнее, форма сразу под ним (display:contents раскладывает #buy по сетке) */
+@media(max-width:860px){
+  .hero-grid>#buy{display:contents}
+  .hero-grid>#buy>h1{order:1; margin:0 0 4px}
+  .hero-grid>#buy>.price-box{order:2; margin:0 0 4px}
+  .hero-grid>#buy>.pricenote{order:2}
+  .hero-grid>div:first-child{order:3}
+  .hero-grid>#buy>.form-card{order:4}
+  .hero-grid>#buy>.sig{order:5}
+  .hero-grid>#buy>.fake-hint{order:6}
+  .hero-grid>.scarcity{order:7}
+  .hero-grid{gap:10px}
+  .product-card{padding:8px 10px 8px} .product-card img{max-height:200px; margin:2px auto 4px} .product-card .ribbon{font-size:12px; padding:5px 10px}
+  .shotcap{display:none}
+}
+/* 13.10: липкая кнопка заказа на телефоне — показывается, когда обе формы вне экрана; после отправки лида убирается */
+.sticky-cta .p{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.sticky-cta.off{display:none!important}
+/* 13.10: на телефоне верхнюю полосу «официальный сайт · оплата при получении» не показываем (решение пользователя) — экономит первый экран */
+@media(max-width:820px){.topbar{display:none}}
+/* 13.10: полоса массовости под ценой — заказов в стране, повторные заказы, рейтинг и число отзывов (просьба пользователя «подчеркнуть, что заказали тысячи») */
+.proof{display:flex; flex-wrap:wrap; gap:6px 14px; margin:2px 0 10px; font-size:13px; font-weight:600; color:var(--muted)}
+.proof span{display:inline-flex; align-items:center; gap:5px; white-space:nowrap}
+.proof span:first-child{color:var(--ink); font-weight:800}
+.proof i{font-style:normal}
+@media(max-width:860px){.hero-grid>#buy>.proof{order:2; margin:0 0 6px} .proof{font-size:12.5px; gap:4px 12px}}
+.order .proof{color:#b7c3d6; margin-top:8px} .order .proof span:first-child{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">Edina uradna stran proizvajalca · Plačilo po povzetju</div>
+  <div class="wrap top-inner">
+    <div class="logo">
+      <span class="mark" id="logoFlag">🇸🇮</span>
+      <span style="min-width:0">Aurivit<sup style="font-size:11px">®</sup><small>Edina uradna stran proizvajalca</small></span>
+    </div>
+    <div class="vf"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-1.2 15.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6L17.8 9l-7 7.2z"/></svg><span>Neposredna prodaja</span></div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="product-card">
+          <span class="disc-ribbon disc">-50%</span>
+          <img src="../../img/m1-aurivit.webp" alt="Aurivit" width="343" height="512" fetchpriority="high" decoding="async">
+          <div><span class="ribbon">Original</span><div class="shotcap">To je originalna embalaža, ki jo prinese dostavljavec: plomba, številka serije, rok uporabe.</div></div>
+        </div>
+      </div>
+        <div class="scarcity" id="scarcity">
+          <div class="left">
+            <span>🔒 <span class="disc">Vaš popust -50% velja, dokler je ta stran odprta</span><span class="nodisc">Ponudba se konča čez:</span></span>
+          </div>
+          <div class="stock-line">Na voljo še: <b id="stockNum">46</b> pak. iz trenutne serije
+            <div class="stockbar"><i id="stockBar" style="width:70%"></i></div></div>
+        </div>
+        <div class="scarcity kept" id="kept" style="display:none"><div class="left">✔ <span class="disc">Akcijska cena -50% je rezervirana za vaš obisk</span><span class="nodisc">Ponudba je rezervirana za vaš obisk</span></div>
+          <div class="stock-line">Na voljo še: <b id="stockNum2">46</b> pak. iz trenutne serije</div></div>
+
+      <div id="buy">
+        <h1>Aurivit® — edina uradna stran v Sloveniji</h1>
+        <div class="price-box">
+          <span class="price-new">39 €</span>
+          <span class="price-old">78 €</span>
+          <span class="save-badge disc">-50%</span>
+        </div>
+        <div class="proof"><span><i>👥</i>Več kot 3 100 naročil v Sloveniji</span><span><i>↻</i>87 % naroči znova</span><span><i>★</i>4,8 · na podlagi 800 mnenj</span></div>
+        <p class="pricenote">Akcijska cena velja do razprodaje trenutne serije.</p>
+
+        <div class="form-card">
+          <form class="order-form" autocomplete="on" novalidate>
+            <button type="button" class="howq" aria-expanded="false">Kako naročiti?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Vpišete ime in telefonsko številko</li><li>Svetovalec pokliče in potrdi naslov ter čas dostave; brez podatkov o kartici</li><li>Dostavljavec vam prinese paket v 1-3 dneh</li><li>Paket ob prevzemu pregledate in plačate dostavljavcu</li></ol>
+            <input class="inp" type="text" name="name" placeholder="Ime in priimek" autocomplete="name">
+            <div class="phone-field"><span class="p48">🇸🇮 +386</span><input class="inp" type="tel" name="phone" placeholder="31 234 567" inputmode="numeric" autocomplete="tel"></div>
+            <p class="ph-err">Vnesite veljavno telefonsko številko</p>
+            <button type="button" class="ph-other" data-intl="+43 664 1234567">Številka iz druge države?</button>
+            <p class="phonewhy">Številko potrebujemo za potrditveni klic. Posredujemo jo samo prodajalcu, službi za potrjevanje naročil in dostavljavcu.</p>
+            <input type="hidden" name="kw" value="si-dc-aurivit">
+            <button class="btn btn-primary btn-cta" type="submit">NAROČI ORIGINAL</button>
+            <p class="today-line">🛒 Danes je že naročilo <b class="todayN">—</b> ljudi</p>
+            <p class="form-note">Brez predplačila · pregled ob prevzemu · 🔒 šifriranje SSL</p>
+          </form>
+          <div class="ok-msg"><div class="ok-big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <b>Hvala! Vaše naročilo smo prejeli.</b><p class="ok-when"></p><p class="ok-keep">🔔 Imejte telefon pri roki in se oglasite na klic.</p></div>
+        </div>
+        <div class="sig">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h3"/></svg>Plačilo<br>po povzetju</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Dostava<br>1-3 dni</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M9 11l1.5 1.5L13.5 9"/></svg>Pregled<br>pred plačilom</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Svetovalec<br>pokliče nazaj</div>
+        </div>
+        <a class="fake-hint" href="#podrobki">⚠ Pazite na ponaredke — preverite, kako prepoznate original</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEAL ============ -->
+<div class="wrap" style="margin-top:18px">
+  <!-- 14.10: траст-блок «одобрен / доказано / без противопоказаний / рекомендуют» (просьба пользователя: до этого все блоки были про доставку и подделки) -->
+  <div class="apr">
+    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l9 3.5v6c0 5.5-3.8 9.7-9 11.5-5.2-1.8-9-6-9-11.5v-6L14 3z"/><path d="M9.5 14l3 3 6-6"/></svg><div><b>Preverjeno in odobreno s strani Ministrstva za zdravje</b><span>In potrjeno s strani tisočev zadovoljnih uporabnikov po vsej državi</span></div></div>
+    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h6M12 3v7l-6 11a2 2 0 001.8 3h12.4a2 2 0 001.8-3l-6-11V3"/><path d="M9 17h10"/></svg><div><b>Znanstveno dokazana učinkovitost</b><span>Potrjeno z raziskavami in praktično uporabo</span></div></div>
+    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 23C5 11 13 5 24 5c0 11-6 19-18 19"/><path d="M5 23l9-9"/></svg><div><b>Brez kontraindikacij</b><span>Brez stranskih učinkov</span></div></div>
+    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13v10H4V13h4z"/><path d="M8 13l5-9c1.5 0 2.5 1 2.5 2.5V11h6a2 2 0 012 2.3l-1.4 7A2 2 0 0120 22H8"/></svg><div><b>90 % priporoča</b><span>Prijateljem in bližnjim po rezultatih ankete kupcev</span></div></div>
+  </div>
+  <div class="seal">
+    <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#fff" stroke="#b98900" stroke-width="1.5"/><circle cx="20" cy="20" r="14.5" fill="none" stroke="#b98900" stroke-width=".8" stroke-dasharray="2 1.5"/><path d="M13.5 20.5l4 4 9-9" fill="none" stroke="#b98900" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><b>Originalen izdelek — neposredna prodaja</b><span>Vsaka pošiljka s plombo proizvajalca in številko serije. Brez posrednikov in pribitkov.</span></div>
+  </div>
+  <div class="certs">
+    <button class="cert" type="button" data-i="0"><img src="../../img/cert1.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇮</span><span class="t">Neposredna prodaja</span><span class="rule"></span><span class="p">Naročila obravnava lastna služba za kupce pri proizvajalcu. Vsako naročilo pred odpremo potrdimo po telefonu.</span><span class="prod">Aurivit®</span></span></button>
+    <button class="cert" type="button" data-i="1"><img src="../../img/cert2.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇮</span><span class="t">Originalna embalaža</span><span class="rule"></span><span class="p">Vsaka pošiljka odide s plombo proizvajalca in številko serije. Brez posrednikov in brez nadaljnjih prodajalcev.</span><span class="prod">Aurivit®</span></span></button>
+    <button class="cert" type="button" data-i="2"><img src="../../img/cert3.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇮</span><span class="t">Jamstvo prodajalca</span><span class="rule"></span><span class="p">Pošiljko pregledate ob prevzemu in plačate šele po pregledu. Prevzem lahko brez stroškov zavrnete.</span><span class="prod">Aurivit®</span></span></button>
+  </div>
+</div>
+<div class="cert-lb" id="certLb" hidden><button class="cert-x" type="button" aria-label="×">×</button><div class="cert-big"></div></div>
+
+<!-- ============ WARNING ============ -->
+<section class="section" id="podrobki" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="alert">
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 9v5"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>Pazite na ponaredke</h2>
+      <p>V zadnjem času se je na spletu pojavilo veliko posnetkov izdelka Aurivit®. Prodajajo se na dražbenih portalih in priložnostnih spletnih trgovinah — s podobnim imenom in skoraj enako embalažo, a z neznano sestavo in neznanim izvorom.</p>
+      <p>Originalnega izdelka Aurivit® ni v fizičnih trgovinah niti na spletnih tržnicah. Naročilo je mogoče samo tukaj — neposredno pri proizvajalcu, brez posrednikov in pribitkov.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="center">Original in ponaredek — razlike</h2>
+    <div class="cmp-scroll">
+      <table class="cmp">
+        <thead><tr><th>Lastnost</th><th class="ok">✓ Original (ta stran)</th><th class="no">✕ Ponaredek</th></tr></thead>
+        <tbody>
+          <tr><td>Aktivna sestava</td><td>Popolna, potrjena s strani proizvajalca</td><td>Zmanjšana ali je sploh ni</td></tr>
+          <tr><td>Plomba in številka serije</td><td>Na vsaki embalaži</td><td>Ju ni ali sta ponarejeni</td></tr>
+          <tr><td>Plačilo</td><td>Po povzetju, po pregledu</td><td>Zahtevano vnaprej</td></tr>
+          <tr><td>Cena</td><td>Poštena, od proizvajalca</td><td>Sumljivo nizka</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO CHECK ============ -->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Edina uradna stran proizvajalca</div><h2>Kako prepoznate original</h2></div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div>Naročajte samo na tej strani — to je edina pot neposredne prodaje proizvajalca.</div>
+      <div class="step"><div class="n">2</div>Ob prevzemu preverite plombo in številko serije na embalaži.</div>
+      <div class="step"><div class="n">3</div>Plačajte šele potem, ko pošiljko pregledate pred dostavljavcem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEES ============ -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="center">Naročate brez tveganja</h2>
+    <div class="guar">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h3"/></svg></div><b>Plačilo šele ob prevzemu</b><span>Brez plačila vnaprej. Dostavljavcu plačate z gotovino ali s kartico šele takrat, ko imate paket v rokah.</span></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M9 11l1.5 1.5L13.5 9"/></svg></div><b>Pregled pred plačilom</b><span>Pošiljko odprete in pregledate pred dostavljavcem. Če kaj ni v redu, jo lahko zavrnete brez kakršnih koli stroškov.</span></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Diskretna pošiljka</b><span>Pošiljamo v nevtralni embalaži, brez oznak o vsebini. Podatke uporabimo izključno za dostavo.</span></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><b>Potrditev po telefonu</b><span>Po oddaji obrazca vas svetovalec pokliče ter potrdi naročilo, naslov in datum dostave. Odgovori tudi na vaša vprašanja.</span></div>
+    </div>
+
+    <div class="deliv">
+      <div class="d-head">🚚 <b>Dostava po vsej Sloveniji</b><span>odprema v 24 urah · plačilo po povzetju</span></div>
+      <div class="d-row">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/><circle cx="18" cy="6" r="1.1" fill="currentColor" stroke="none"/></svg><div><b>Paketomat</b><span>prevzem, kadar želite, diskretno</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><b>Dostavljavec GLS</b><span>do vrat, 1-3 dni</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6"/></svg><div><b>Pošta Slovenije</b><span>prevzem na pošti</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--REVIEWS-->
+<section class="section" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="rv-head">
+      <div><div class="eyebrow">Mnenja kupcev</div><h2 style="margin:0">Kaj pišejo ljudje, ki so naročili tukaj</h2></div>
+      <div class="rv-score"><b>4,8</b><div><div class="stars">★★★★★</div>na podlagi 800 mnenj</div></div>
+      <div class="rv-dist"><div><span>5★</span><i style="width:81%"></i><b>81%</b></div><div><span>4★</span><i style="width:14%"></i><b>14%</b></div><div><span>3★</span><i style="width:5%"></i><b>5%</b></div></div>
+      <span class="pill ok" style="align-self:center">↻ 87 % kupcev naroči znova</span>
+    </div>
+    <div class="reviews" id="reviews">
+      <div class="review"><div class="head"><div class="avatar" style="background:#1f6feb">A<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ana K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ljubljana · <span class="ago" data-i="0"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Obrazec sem oddala v nedeljo zvečer, v ponedeljek dopoldne me je že poklicala svetovalka in potrdila naslov.“</p></div>
+      <div class="review"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marko B.</div><div class="city">Maribor · <span class="ago" data-i="1"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prišel v dveh dneh, plačal sem kurirju na roke in to je bilo vse.“</p></div>
+      <div class="review"><div class="head"><div class="avatar" style="background:#f6a609">N<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nina S.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Celje · <span class="ago" data-i="2"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Klic je bil kratek in prijazen, samo potrditev naslova in ure dostave.“</p></div>
+      <div class="review"><div class="head"><div class="avatar" style="background:#e5484d">J<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Janez T.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Kranj · <span class="ago" data-i="3"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dostavljavec me je prej poklical, da je pred blokom, tako da nisem čakal pri vratih.“</p></div>
+      <div class="review"><div class="head"><div class="avatar" style="background:#7c3aed">K<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Katja M.</div><div class="city">Koper · <span class="ago" data-i="4"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Vse skupaj tri dni od oddaje obrazca do prevzema, kar je hitreje, kot sem računala.“</p></div>
+      <div class="review"><div class="head"><div class="avatar" style="background:#0891b2">P<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Peter H.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Velenje · <span class="ago" data-i="5"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Dostava je bila dva dni kasneje, kot so rekli po telefonu, drugače pa nimam pripomb, plačilo pri prevzemu je čisto enostavno.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za zamudo, tisti teden je imela dostavna služba res veliko paketov.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">Š<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Špela R.</div><div class="city">Novo mesto · <span class="ago" data-i="6"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Hitro, brez zapletov, denar sem dala kurirju šele, ko sem paket pregledala.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matej Z.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ptuj · <span class="ago" data-i="7"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Naročil sem v torek zjutraj, v četrtek popoldne je bil paket že pri meni doma.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">M<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mojca L.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Ljubljana · <span class="ago" data-i="8"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Svetovalka je vse lepo pojasnila glede plačila po povzetju in ni silila v večje pakiranje.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">B<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Boštjan P.</div><div class="city">Trbovlje · <span class="ago" data-i="9"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Cena se mi zdi malenkost previsoka, sicer pa je bila dostava korektna in plačal sem šele pri vratih.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala za odkritost, ceno določa proizvajalec, pri dveh pakiranjih pa je cena na kos nižja.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">T<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tjaša N.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Kamnik · <span class="ago" data-i="10"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prvič sem naročala na ta način in me je presenetilo, kako preprosto je bilo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">J<img src="../../img/av/rvm5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jože K.</div><div class="city">Jesenice · <span class="ago" data-i="11"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir je prišel točno v dogovorjenem terminu, niti minute zamude, plačal sem z gotovino.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">B<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Barbara S.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Nova Gorica · <span class="ago" data-i="12"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Poklicali so me šele naslednje jutro, čeprav sem obrazec izpolnila že dopoldne, in to me je malo zmotilo. Dostava je potem tekla brez težav, plačala sem dostavljavcu.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se, tisti dan smo imeli veliko klicev in vrsta se je zavlekla v naslednje jutro.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvm6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marjan D.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Domžale · <span class="ago" data-i="13"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Sina sem poslal po paket do vhoda, kurir mu je vse izročil, denar pa sem pripravil vnaprej.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">M<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mateja V.</div><div class="city">Škofja Loka · <span class="ago" data-i="14"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Na klic sem čakala le nekaj minut, naslov so mi prebrali nazaj, da ni bilo pomote.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">R<img src="../../img/av/rvm7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Rok B.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Murska Sobota · <span class="ago" data-i="15"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Odprl sem škatlo kar pred dostavljavcem, vse nepoškodovano, šele nato sem plačal.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">I<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Irena C.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Izola · <span class="ago" data-i="16"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Mož je prevzel paket, ker me ni bilo doma, kurir ga je prej poklical na telefon.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">A<img src="../../img/av/rvm8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Andrej P.</div><div class="city">Slovenj Gradec · <span class="ago" data-i="17"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Nekaj dni več, kot je bilo obljubljeno, drugače pa vse v redu, embalaža cela in plačilo po povzetju.“</p><div class="reply"><b>Odgovor trgovine</b>Za zamudo se opravičujemo, vmes je bil praznik in dostava je zaostala za en dan.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">P<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Petra M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Krško · <span class="ago" data-i="18"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zelo korektna komunikacija, poklicali so, kot so obljubili, in povedali točen dan dostave.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">A<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ana T.</div><div class="city">Postojna · <span class="ago" data-i="19"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Denar sem izročila šele, ko sem paket pregledala pri vratih, tako da sem bila čisto mirna.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">N<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nina J.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Sežana · <span class="ago" data-i="20"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dva dni in paket je bil tu, čeprav živim precej stran od večjih mest.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Maja K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ljubljana · <span class="ago" data-i="21"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Embalaža je bila brezhibna, nič zmečkanega, škatla lepo zalepljena z varnostnim trakom.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">J<img src="../../img/av/rvm9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Janez P.</div><div class="city">Maribor · <span class="ago" data-i="22"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Obljubili so dostavo v dveh dneh, prišlo je v štirih, me je pa kurir prej poklical in se dogovoril za uro.“</p><div class="reply"><b>Odgovor trgovine</b>Žal nam je za dva dneva čakanja, pošiljka je predolgo obtičala v sortirnici.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">K<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Katja B.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Celje · <span class="ago" data-i="23"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Po telefonu so vprašali samo za naslov in kdaj sem doma, nič vsiljevanja.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">M<img src="../../img/av/rvm10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matej S.</div><div class="city">Kranj · <span class="ago" data-i="24"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Podatke sem oddal v petek, v ponedeljek je bil paket že pri meni.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">Š<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Špela G.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Velenje · <span class="ago" data-i="25"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Res hitra dostava, nisem pričakovala, da bo šlo tako gladko brez predplačila.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">M<img src="../../img/av/rvm11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marko L.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Koper · <span class="ago" data-i="26"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Gospod kurir je poklical pol ure prej, da lahko pridem dol pred blok.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mojca T.</div><div class="city">Novo mesto · <span class="ago" data-i="27"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Namesto še isti dan so poklicali šele naslednje jutro, potem pa je vse steklo gladko, dostava v dveh dneh.“</p><div class="reply"><b>Odgovor trgovine</b>Oprostite za zamik, klicni center zvečer ne dela, zato smo se oglasili prvo jutro.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">P<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Peter K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ptuj · <span class="ago" data-i="28"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Brez kartice, brez predplačila, plačaš dostavljavcu in konec, meni to popolnoma ustreza.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">B<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Barbara Ž.</div><div class="city">Trbovlje · <span class="ago" data-i="29"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Zamuda je bila kar tri dni čez obljubljeni rok in tako dolgo čakanje me je razjezilo. Ko je paket prišel, je bilo vse v redu in sem plačala na roke.“</p><div class="reply"><b>Odgovor trgovine</b>Iskreno se opravičujemo za tri dni zamude, paket je bil napačno usmerjen in je potoval prek drugega centra.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">B<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Boštjan M.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Kamnik · <span class="ago" data-i="30"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Škatla je prišla cela, brez odrgnin, vse zapakirano tako, kot je treba.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">T<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tjaša R.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Jesenice · <span class="ago" data-i="31"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Svetovalki sem povedala, da sem doma samo dopoldne, in kurir je res prišel dopoldne.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">J<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jože V.</div><div class="city">Nova Gorica · <span class="ago" data-i="32"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Nisem imel nobenih skrbi, ker denarja ni bilo treba nakazati vnaprej.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mateja H.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Domžale · <span class="ago" data-i="33"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Tri dni od klica do dostave, paket mi je kurir prinesel kar do vrat stanovanja.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">R<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Rok J.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Škofja Loka · <span class="ago" data-i="34"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Ceno bi si želel malo nižjo, drugače pa nimam česa očitati, dostava je bila hitra in plačal sem pri prevzemu.“</p><div class="reply"><b>Odgovor trgovine</b>Razumemo, ceno oblikuje proizvajalec, zato nanjo nimamo vpliva.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">I<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Irena P.</div><div class="city">Murska Sobota · <span class="ago" data-i="35"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Sosed je paket prevzel namesto mene, kurir je bil čisto v redu s tem.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">A<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Andrej K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Izola · <span class="ago" data-i="36"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Ko je dostavljavec pozvonil, sem bil ravno na balkonu, pa me je brez godrnjanja počakal.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">P<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Petra N.</div><div class="city">Slovenj Gradec · <span class="ago" data-i="37"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Naročila sem v sredo, v petek zjutraj me je poklical kurir, da je na poti.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">A<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ana B.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Krško · <span class="ago" data-i="38"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Hvala za korekten odnos, od klica do prevzema ni bilo nobenega zapleta.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvm5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marjan T.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Postojna · <span class="ago" data-i="39"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Zamik pri dostavi je bil en dan, kar me niti ni preveč motilo, ker so me obvestili.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala za razumevanje, vmes je bil vikend in paket je zato potoval dan dlje.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">M<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Maja S.</div><div class="city">Sežana · <span class="ago" data-i="40"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačala sem šele takrat, ko sem paket držala v rokah, in to je zame najpomembnejše.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">J<img src="../../img/av/rvm6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Janez M.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Ljubljana · <span class="ago" data-i="41"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Za Bežigradom sem bil doma šele po peti uri in kurir je prišel točno ob šestih.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">N<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nina K.</div><div class="city">Maribor · <span class="ago" data-i="42"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Takoj po oddaji obrazca je prišel klic, potrdila sva naslov in to je bilo vse.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvm7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matej D.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Celje · <span class="ago" data-i="43"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prijeten dostavljavec, počakal je, da sem odprl škatlo in preštel denar.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">K<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Katja Ž.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Kranj · <span class="ago" data-i="44"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Malo dlje je trajalo, kot sem pričakovala, štirje dnevi namesto dveh, sicer pa je bila embalaža lepa in plačilo brez težav.“</p><div class="reply"><b>Odgovor trgovine</b>Res nam je žal, da ste čakali dvakrat dlje, dostavna služba je tiste dni zaostajala z razvozom.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">B<img src="../../img/av/rvm8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Boštjan L.</div><div class="city">Velenje · <span class="ago" data-i="45"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kartice mi sploh ni bilo treba vzeti v roke, plačal sem z gotovino ob prevzemu.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">Š<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Špela M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Koper · <span class="ago" data-i="46"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dogovorili smo se za dostavo v soboto dopoldne in tako je tudi bilo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">P<img src="../../img/av/rvm9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Peter B.</div><div class="city">Novo mesto · <span class="ago" data-i="47"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Mama je bila doma, kurir ji je izročil paket, plačala je z gotovino, ki sem jo pustil.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">M<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mojca J.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Ptuj · <span class="ago" data-i="48"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Rok dostave so krepko presegli, na paket sem čakala skoraj teden dni. Ob prevzemu je bilo sicer vse v redu, škatla cela in plačilo na roke.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za tako dolgo čakanje, pošiljka je obstala med prazniki in krenila naprej šele po njih.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">T<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tjaša K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Trbovlje · <span class="ago" data-i="49"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Enostavno in brez živciranja, izpolniš obrazec, počakaš na klic in paket pride.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">J<img src="../../img/av/rvm10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jože S.</div><div class="city">Kamnik · <span class="ago" data-i="50"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Popoldne sem oddal naročilo, čez dobro uro so že klicali s potrditvijo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">B<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Barbara P.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Jesenice · <span class="ago" data-i="51"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Točno tako, kot so napovedali po telefonu, dan in ura sta se ujela.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">M<img src="../../img/av/rvm11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marjan Č.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Nova Gorica · <span class="ago" data-i="52"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Čakal sem dan dlje, kot je bilo dogovorjeno, ampak kurir se je opravičil in bil zelo prijazen.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala, da ste omenili kurirja, pohvalo mu bomo prenesli, za dan zamude pa se opravičujemo.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">M<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mateja B.</div><div class="city">Domžale · <span class="ago" data-i="53"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Lepo zapakirano, nič ni bilo poškodovano, plačala sem dostavljavcu pred vrati.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">R<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Rok M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Škofja Loka · <span class="ago" data-i="54"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Med tednom me ni doma, zato sem prosil za soboto in so mi ustregli.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">I<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Irena T.</div><div class="city">Murska Sobota · <span class="ago" data-i="55"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Sprva sem bila nezaupljiva, ker je bilo naročanje tako preprosto, a je vse potekalo brez zapletov.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">A<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Andrej S.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Izola · <span class="ago" data-i="56"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Gotovino sem imel pripravljeno, kurir je imel drobiž, vse skupaj je trajalo dve minuti.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">P<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Petra K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Slovenj Gradec · <span class="ago" data-i="57"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Zdelo se mi je malo drago, ampak dostava je bila hitra in plačala sem šele pri prevzemu.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala za mnenje, ceno postavlja proizvajalec in je sami ne moremo znižati.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">A<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ana M.</div><div class="city">Krško · <span class="ago" data-i="58"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Pošiljka je prišla dan prej, kot sem pričakovala, kar me je prijetno presenetilo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">M<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Marko P.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Postojna · <span class="ago" data-i="59"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Ni bilo nobenega vsiljivega prodajanja po telefonu, samo naslov in termin dostave.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">M<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Maja B.</div><div class="city">Sežana · <span class="ago" data-i="60"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„V sredo popoldne so klicali, v petek je bil paket na naslovu, hitreje res ne gre.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">J<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Janez K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ljubljana · <span class="ago" data-i="61"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Priznam, da je bil paket dva dni pozen, drugače pa je bilo vse korektno, tudi kurir je bil prijazen.“</p><div class="reply"><b>Odgovor trgovine</b>Dva dni zamude sta res preveč, opravičujemo se, pošiljka je čakala na naslednji razvoz v vaš kraj.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">N<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nina M.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Maribor · <span class="ago" data-i="62"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Sinoči sem oddala podatke, danes dopoldne sem že imela klic za potrditev.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">K<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Katja S.</div><div class="city">Celje · <span class="ago" data-i="63"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prevzela sem pri vhodu v blok, vse pregledala in plačala, brez zapletene procedure.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">M<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matej B.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Kranj · <span class="ago" data-i="64"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Fino je, da plačaš šele takrat, ko dobiš paket v roke, to daje občutek varnosti.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">Š<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Špela T.</div><div class="city">Velenje · <span class="ago" data-i="65"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Rekli so, da bo paket tu v dveh dneh, prišel pa je peti dan. Ostalo je bilo v redu, embalaža nepoškodovana in plačilo pri prevzemu.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za pet dni namesto dveh, paket je šel po precej daljši poti, kot bi moral.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">P<img src="../../img/av/rvm5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Peter S.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Koper · <span class="ago" data-i="66"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dostavljavka me je poklicala uro prej, da sem se lahko pripeljal domov z dela.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mojca P.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Novo mesto · <span class="ago" data-i="67"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Tokrat sem naročila dve pakiranji in cena na kos je bila ugodnejša, dostava pa enako hitra.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">B<img src="../../img/av/rvm6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Boštjan K.</div><div class="city">Ptuj · <span class="ago" data-i="68"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Hčerka mi je pomagala izpolniti obrazec, klic je prišel še isti dan popoldne.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">T<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tjaša S.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Trbovlje · <span class="ago" data-i="69"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Naslednji dan namesto istega dne so se oglasili po telefonu, vse ostalo pa je bilo brezhibno.“</p><div class="reply"><b>Odgovor trgovine</b>Res nam je žal, da ste na klic čakali dan dlje, naročilo je prispelo po koncu delovnega časa.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">J<img src="../../img/av/rvm7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jože B.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Kamnik · <span class="ago" data-i="70"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Pri naročilu sem pripisal, naj pridejo po četrti uri, in kurir je res prišel ob pol petih.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">B<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Barbara M.</div><div class="city">Jesenice · <span class="ago" data-i="71"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Super izkušnja, od naročila do paketa so minili trije dnevi, brez enega samega zapleta.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">P<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Petra V.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Celje · <span class="ago" data-i="72"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Naročilo oddala v ponedeljek, v sredo je bilo že pri meni. Vse brez zapletov.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mojca R.</div><div class="city">Slovenske Konjice · <span class="ago" data-i="73"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zelo zadovoljna s hitro dostavo in prijaznostjo kurirja.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">S<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Simona K.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Postojna · <span class="ago" data-i="74"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Operater me je poklical uro po naročilu, vse je bilo jasno razloženo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">J<img src="../../img/av/rvm8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jan B.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Slovenj Gradec · <span class="ago" data-i="75"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Dostava je zamujala en dan glede na prvoten dogovor.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za zamudo, trudimo se izboljšati dostavne roke.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">S<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Suzana T.</div><div class="city">Tolmin · <span class="ago" data-i="76"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Všeč mi je bila možnost plačila ob prevzemu, to je zelo priročno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">U<img src="../../img/av/rvm9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Urban P.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Izola · <span class="ago" data-i="77"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket sem dvignil na prevzemni točki, vse urejeno brez težav.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">E<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Erika D.</div><div class="city">Kranj · <span class="ago" data-i="78"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prišla sem domov in paket me je že čakal pri sosedih, ker me ni bilo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">A<img src="../../img/av/rvm10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Aljaž S.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Trzin · <span class="ago" data-i="79"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Na klic za potrditev naročila sem čakal malo dlje, potem pa je šlo hitro.“</p><div class="reply"><b>Odgovor trgovine</b>Se opravičujemo za čakanje, včasih smo zelo zasedeni, trudimo se biti hitrejši.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">M<img src="../../img/av/rvm11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Miha N.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Bovec · <span class="ago" data-i="80"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Enostavno naročilo in hitra dostava. Prejel naslednji dan.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Maša O.</div><div class="city">Zreče · <span class="ago" data-i="81"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zadovoljna sem z vsem – od oddaje naročila do prevzema.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">T<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tina M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Idrija · <span class="ago" data-i="82"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir mi je pred dostavo še enkrat potrdil uro dostave po telefonu.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">A<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Andraž L.</div><div class="city">Cerknica · <span class="ago" data-i="83"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Vse je bilo lepo zapakirano in hitro dostavljeno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">M<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matej G.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Murska Sobota · <span class="ago" data-i="84"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Najbolj všeč mi je bilo, da lahko plačam šele, ko dobim paket v roke.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">S<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Sabina H.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Sevnica · <span class="ago" data-i="85"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prevzela mama, saj me ni bilo doma. Hvala za fleksibilnost.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">K<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Klara Z.</div><div class="city">Ajdovščina · <span class="ago" data-i="86"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zelo prijazen klic operaterja za potrditev, hitro dogovorjeno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">L<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Luka F.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Črnomelj · <span class="ago" data-i="87"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zadovoljstvo z naročilom, vse je potekalo, kot obljubljeno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">L<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Lara J.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Ilirska Bistrica · <span class="ago" data-i="88"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Ponovno naročam pri vas, ker ste vedno dosledni.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">N<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nejc M.</div><div class="city">Bled · <span class="ago" data-i="89"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačilo po povzetju je zame idealno, naročilo brez skrbi.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">N<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nika S.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Šenčur · <span class="ago" data-i="90"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Z veseljem priporočam zaradi prijaznosti in hitrosti.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">K<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Klemen R.</div><div class="city">Brežice · <span class="ago" data-i="91"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prišel celo dan prej od obljubljenega roka.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">J<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jana P.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Radovljica · <span class="ago" data-i="92"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Paket je bil sicer dobro zapakiran, a kurir ni prej poklical, ko je bil že na poti.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se, opozorili bomo ekipo na pomen predhodnega klica.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvm5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matic I.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Nova Gorica · <span class="ago" data-i="93"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Celoten postopek je bil zelo preprost, naročilo v dveh minutah.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">Z<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Zala B.</div><div class="city">Hoče · <span class="ago" data-i="94"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prevzem na paketomatu je bil hiter, uporabno za zaposlene.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">M<img src="../../img/av/rvm6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Matija K.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Brežice · <span class="ago" data-i="95"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prijazna kurirka, z veseljem sem plačal ob prejemu.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">E<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Eva N.</div><div class="city">Dravograd · <span class="ago" data-i="96"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Mož je dvignil paket namesto mene, ni bilo nobenih zapletov.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">S<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Sara G.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Mengeš · <span class="ago" data-i="97"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačila po povzetju sem zelo vajena, vedno brez skrbi.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">F<img src="../../img/av/rvm7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Filip T.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Šmarje pri Jelšah · <span class="ago" data-i="98"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Dostava je trajala en dan več od pričakovanj, ampak sicer vse ok.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala za razumevanje, trudimo se, da bodo dostave še hitrejše.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">J<img src="../../img/av/rvm8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jure H.</div><div class="city">Ravne na Koroškem · <span class="ago" data-i="99"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Pošiljka je bila pravilno zapečatena, kar mi veliko pomeni.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">I<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ivana V.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Laško · <span class="ago" data-i="100"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Hitra izkušnja, takoj po potrditvenem klicu je sledila dostava.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">P<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Petra S.</div><div class="city">Hrastnik · <span class="ago" data-i="101"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Vse informacije na telefonu jasno razložene, pomoč operaterke je bila odlična.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">T<img src="../../img/av/rvm9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tjaž D.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Medvode · <span class="ago" data-i="102"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačal sem šele, ko sem odprl paket, kar mi daje več zaupanja.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">L<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Lidija K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Trbovlje · <span class="ago" data-i="103"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dostava brez zamud, kurir je bil zelo vljuden.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">Ž<img src="../../img/av/rvm10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Žiga U.</div><div class="city">Šentjur · <span class="ago" data-i="104"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Drugič naročam in vedno ste zelo točni z dostavo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">T<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Teja M.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Logatec · <span class="ago" data-i="105"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Možnost prevzema na bližnji točki mi je prišla zelo prav.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">G<img src="../../img/av/rvm11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Gregor D.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Vrhnika · <span class="ago" data-i="106"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prispel še isti teden, kot sem naročil.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">M<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mihela J.</div><div class="city">Žalec · <span class="ago" data-i="107"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Operater je bil prijazen in potrpežljiv z dodatnimi vprašanji.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">A<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Andrej P.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Tolmin · <span class="ago" data-i="108"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Na klic sem čakal več kot en dan po oddaji naročila.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za zamik, trenutno je veliko povpraševanja.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">I<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ivan N.</div><div class="city">Slovenska Bistrica · <span class="ago" data-i="109"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Vse je bilo hitro, brez komplikacij, dostava v roku.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">K<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Katja L.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Ribnica · <span class="ago" data-i="110"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačilo ob prevzemu je enostavno in mi veliko pomeni.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">J<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jure T.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Sežana · <span class="ago" data-i="111"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Zame osebno bi lahko bil prevzemni čas bolj natančen.“</p><div class="reply"><b>Odgovor trgovine</b>Razumemo, trudimo se čim bolj prilagoditi urnike strankam.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">N<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Neli H.</div><div class="city">Velenje · <span class="ago" data-i="112"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir me je poklical, ko je bil na poti, in vse je šlo hitro.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">A<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ajda K.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Litija · <span class="ago" data-i="113"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket prišel brez poškodb, lepo zalepljen in varen.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">T<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tomaž I.</div><div class="city">Prevalje · <span class="ago" data-i="114"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Čakal sem dva dni več kot so rekli, drugače pa ok.“</p><div class="reply"><b>Odgovor trgovine</b>Zaradi izjem smo imeli zamudo, oprostite za nevšečnosti.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">S<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Sara J.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Grosuplje · <span class="ago" data-i="115"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Brez težav, kontakt so vzpostavili še isti dan po naročilu.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">N<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Neja T.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Šentjernej · <span class="ago" data-i="116"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Ponovno bi naročila, ker je bil postopek prijazen in hiter.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">L<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Lara D.</div><div class="city">Piran · <span class="ago" data-i="117"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prvič sem izbrala prevzem v paketomatu in je bilo zelo preprosto.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">G<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Gašper K.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Metlika · <span class="ago" data-i="118"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Dostava je zamujala zaradi vremenskih razmer, kar so mi vnaprej sporočili.“</p><div class="reply"><b>Odgovor trgovine</b>Hvala za razumevanje, včasih vreme res vpliva na roke dostave.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">D<img src="../../img/av/rvm5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Dejan Z.</div><div class="city">Kranjska Gora · <span class="ago" data-i="119"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Plačal z gotovino ob prevzemu, to mi najbolj ustreza.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">T<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tina R.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Bistrica ob Sotli · <span class="ago" data-i="120"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir je bil zelo vljuden in točen, priporočam.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">S<img src="../../img/av/rvm6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Simon F.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Lenart · <span class="ago" data-i="121"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Od naročila do prevzema le dva dni, zelo hitro.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">J<img src="../../img/av/rvf7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Jasna S.</div><div class="city">Škofljica · <span class="ago" data-i="122"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prevzela sem paket na točki in je šlo res hitro.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">B<img src="../../img/av/rvm7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Bor Z.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Moravče · <span class="ago" data-i="123"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Brez skritih stroškov, cena enaka kot v oglasu.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">B<img src="../../img/av/rvf8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Betka H.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Tišina · <span class="ago" data-i="124"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zadovoljna, ker so vsi stroški bili razvidni že na začetku.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">O<img src="../../img/av/rvm8.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ožbej J.</div><div class="city">Lendava · <span class="ago" data-i="125"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Operater mi je prijazno potrdil naročilo, nato hitro dostava.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">V<img src="../../img/av/rvf9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Vida M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Videm · <span class="ago" data-i="126"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Bala sem se predplačila, tukaj pa plačaš ob prevzemu – odlično.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">Ž<img src="../../img/av/rvm9.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Žan T.</div><div class="city">Benedikt · <span class="ago" data-i="127"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★☆☆</div><p>„Pošiljka je zamujala, sem pa bil sproti obveščen.“</p><div class="reply"><b>Odgovor trgovine</b>Žal nam je za zamudo, hvaležni smo za vaše potrpljenje.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">B<img src="../../img/av/rvf10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Barbara D.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Preddvor · <span class="ago" data-i="128"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prevzela hčerka, vse je šlo brez zapletov.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">M<img src="../../img/av/rvf11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Maja U.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Mirna · <span class="ago" data-i="129"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Cenim, da ni bilo treba nič vnaprej plačati.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">T<img src="../../img/av/rvm10.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Tilen K.</div><div class="city">Dobrova · <span class="ago" data-i="130"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Naročil že drugič, ker je postopek preprost.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">J<img src="../../img/av/rvf0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Janina B.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Divača · <span class="ago" data-i="131"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Klic za potrditev je sledil hitro, v istem dnevu sem že vedela vse.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">J<img src="../../img/av/rvf1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Julija G.</div><div class="city">Podčetrtek · <span class="ago" data-i="132"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir je bil izredno prijazen pri predaji paketa.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">B<img src="../../img/av/rvm11.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Boris F.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Šoštanj · <span class="ago" data-i="133"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Klic sem prejel z nekajurno zamudo, a kasneje je vse teklo gladko.“</p><div class="reply"><b>Odgovor trgovine</b>Opravičujemo se za krajšo zamudo, trudimo se biti še hitrejši.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">G<img src="../../img/av/rvm0.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Gregor Z.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Žiri · <span class="ago" data-i="134"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Brez težav, jasno razloženo, hitro dobavljeno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">S<img src="../../img/av/rvf2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Sara L.</div><div class="city">Komenda · <span class="ago" data-i="135"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Paket je prevzel moj partner, ni bilo treba biti doma.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">I<img src="../../img/av/rvf3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Ivanka M.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Dolenjske Toplice · <span class="ago" data-i="136"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★☆</div><p>„Paket je zaradi nenapovedanega praznika zamujal en dan.“</p><div class="reply"><b>Odgovor trgovine</b>Prazniki včasih vplivajo na dostavo, hvala za razumevanje.</div></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">M<img src="../../img/av/rvm1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Mitja P.</div><div class="city">Šmartno ob Paki · <span class="ago" data-i="137"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Pošiljka je prišla v popolni embalaži, vse brez poškodb.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#1f6feb">A<img src="../../img/av/rvm2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Aleš C.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Rogaška Slatina · <span class="ago" data-i="138"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Vse je bilo enostavno, od potrditve do dostave.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#12a150">M<img src="../../img/av/rvf4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Monika N.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Radlje ob Dravi · <span class="ago" data-i="139"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Prvič naročala in se mi je zdel postopek res brezskrben.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#f6a609">D<img src="../../img/av/rvm3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Darko V.</div><div class="city">Dobrna · <span class="ago" data-i="140"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Super izkušnja, vse je bilo hitro dostavljeno kot dogovorjeno.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#e5484d">S<img src="../../img/av/rvf5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Sabina G.<svg class="src" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><circle cx="12" cy="12" r="12" fill="url(#ig)"/><rect x="6.5" y="6.5" width="11" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="15.4" cy="8.7" r=".9" fill="#fff"/></svg></div><div class="city">Borovnica · <span class="ago" data-i="141"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Zelo zadovoljna s tem, da lahko plačam, ko prejmem paket.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#7c3aed">N<img src="../../img/av/rvf6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Nina Z.<svg class="src" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path d="M13.3 20v-6.2h2.1l.3-2.4h-2.4V9.8c0-.7.2-1.2 1.2-1.2h1.3V6.5c-.2 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v1.8H8.7v2.4h2.1V20z" fill="#fff"/></svg></div><div class="city">Makole · <span class="ago" data-i="142"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Kurir je bil prijazen in mi prinesel paket na delo.“</p></div>
+      <div class="review hid"><div class="head"><div class="avatar" style="background:#0891b2">D<img src="../../img/av/rvm4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><div><div class="name">Dominik M.</div><div class="city">Kostanjevica na Krki · <span class="ago" data-i="143"></span></div></div><span class="verified">✔ nakup potrjen</span></div><div class="stars">★★★★★</div><p>„Dostava in komunikacija brez pripomb, priporočam.“</p></div>
+    </div>
+    <button class="btn rv-more" id="rvMore" type="button">Pokaži več mnenj</button>
+  </div>
+</section>
+<!--/REVIEWS-->
+
+<!-- ============ FAQ ============ -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="center">Pogosta vprašanja</h2>
+    <div class="faq">
+      <div class="q open"><button>Ali lahko Aurivit® kupim ceneje drugje?<span class="chev">▾</span></button><div class="ans" style="max-height:400px"><div class="ans-inner">Ta stran je edino mesto neposredne prodaje. Ponudbe drugod so preprodaja ali ponaredki: proizvajalec ne odgovarja za njihovo sestavo in kakovost.</div></div></div>
+      <div class="q"><button>Kdaj prispe paket?<span class="chev">▾</span></button><div class="ans"><div class="ans-inner">Dostavljavec običajno dostavi v 1-3 delovnih dneh po vsej Sloveniji. Svetovalec datum potrdi po telefonu.</div></div></div>
+      <div class="q"><button>Ali moram plačati vnaprej?<span class="chev">▾</span></button><div class="ans"><div class="ans-inner">Ne. Plačilo poteka samo ob prevzemu — z gotovino ali s kartico dostavljavcu, po pregledu paketa.</div></div></div>
+      <div class="q"><button>Kaj pa, če si premislim?<span class="chev">▾</span></button><div class="ans"><div class="ans-inner">Paket lahko ob dostavi zavrnete brez kakršnih koli stroškov.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ORDER ============ -->
+<section class="section" id="order" style="padding-top:0">
+  <div class="wrap">
+    <div class="order">
+      <div class="order-grid">
+        <div>
+          <div class="eyebrow" style="color:#7fb0ff">Edina uradna stran proizvajalca</div>
+          <h2>Naročite originalni Aurivit®</h2>
+          <p class="muted" style="font-size:14.5px">Izpolnite obrazec: svetovalec vas bo v nekaj minutah poklical in potrdil naslov ter datum dostave. Brez plačila vnaprej.</p>
+          <div class="proof"><span><i>👥</i>Več kot 3 100 naročil v Sloveniji</span><span><i>↻</i>87 % naroči znova</span></div>
+          <div class="price-box"><span class="price-new">39 €</span><span class="price-old">78 €</span><span class="save-badge disc">-50%</span></div>
+          <ul class="perks">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Plačilo šele ob prevzemu</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Pregled pred plačilom</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Diskretna pošiljka</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Potrditev po telefonu</li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <form class="order-form" autocomplete="on" novalidate>
+            <button type="button" class="howq" aria-expanded="false">Kako naročiti?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Vpišete ime in telefonsko številko</li><li>Svetovalec pokliče in potrdi naslov ter čas dostave; brez podatkov o kartici</li><li>Dostavljavec vam prinese paket v 1-3 dneh</li><li>Paket ob prevzemu pregledate in plačate dostavljavcu</li></ol>
+            <input class="inp" type="text" name="name" placeholder="Ime in priimek" autocomplete="name">
+            <div class="phone-field"><span class="p48">🇸🇮 +386</span><input class="inp" type="tel" name="phone" placeholder="31 234 567" inputmode="numeric" autocomplete="tel"></div>
+            <p class="ph-err">Vnesite veljavno telefonsko številko</p>
+            <button type="button" class="ph-other" data-intl="+43 664 1234567">Številka iz druge države?</button>
+            <p class="phonewhy">Številko potrebujemo za potrditveni klic. Posredujemo jo samo prodajalcu, službi za potrjevanje naročil in dostavljavcu.</p>
+            <input type="hidden" name="kw" value="si-dc-aurivit">
+            <button class="btn btn-primary btn-cta" type="submit">NAROČI ORIGINAL</button>
+            <p class="today-line">🛒 Danes je že naročilo <b class="todayN">—</b> ljudi</p>
+            <p class="form-note">Brez predplačila · pregled ob prevzemu · 🔒 šifriranje SSL</p>
+          </form>
+          <div class="ok-msg"><div class="ok-big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <b>Hvala! Vaše naročilo smo prejeli.</b><p class="ok-when"></p><p class="ok-keep">🔔 Imejte telefon pri roki in se oglasite na klic.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-cta" id="stickyCta"><div class="p">39 €<small>78 €</small></div><a class="btn btn-primary" href="#buy" id="stickyBtn">NAROČI ORIGINAL</a></div>
+<footer>
+  <div class="wrap">
+    <div class="legal"><b>Neposredna prodaja proizvajalca</b><br>Naročila obravnava uradna podpora kupcem pri proizvajalcu. Osebni podatki se uporabljajo izključno za obdelavo naročila.</div>
+    <div class="links"><a href="../../privacy.html">Zasebnost</a><a href="../../terms.html">Pogoji</a><a href="../../kontakt.html">Kontakt</a></div>
+    <p class="disclaimer">© 2026 Aurivit®. Prehransko dopolnilo. Ne nadomešča raznolike prehrane in zdravega načina življenja. Predstavljena mnenja so mnenja kupcev.</p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var WORKER='https://pilot-leads.bnsshub.workers.dev', KW='si-dc-aurivit', KEYWORD='aurivit', BTN='NAROČI ORIGINAL';
+  if('-50%'==='') document.body.classList.add('free');
+  // 13.10: одна отправка на страницу — после успеха прячем ОБЕ формы, помним сутки в localStorage (повтор из второй формы/после перезагрузки давал 7% дублей)
+  var SENT_KEY='lp_sent_'+KW, sending=false;
+  function markSent(){ document.body.classList.add('sent');
+    Array.prototype.forEach.call(document.querySelectorAll('form.order-form'),function(f){ f.style.display='none'; });
+    Array.prototype.forEach.call(document.querySelectorAll('.ok-msg'),function(o){ o.style.display='block'; });
+    var st=document.getElementById('stickyCta'); if(st){ st.classList.remove('on'); st.classList.add('off'); }
+    try{ localStorage.setItem(SENT_KEY, String(Date.now())); }catch(e){} }
+  var qs=new URLSearchParams(location.search);
+  // click-id из трекера: основной параметр cid; запасные — субы сетей и gclid Google
+  var gclid='';['cid','sub5','sid5','sub_id_4','m','d5','subacc4','utm_content'].some(function(k){gclid=qs.get(k)||'';return !!gclid;});
+  var GCLID=qs.get('gclid')||'';   // метка Google Ads (автопометка) — уходит в ZTDS как параметр клика, cid-ом НЕ является
+  var CTYPE=qs.get('ctype')||'';   // 12.10: версия набора креативов из ссылки кампании (&ctype=BL1_HARD) — уходит в /hit и /lead, панель группирует по ней
+  // кеш cid: ztds_cid + ztds_src (gclid Ads, при котором cid выдан). Новый gclid ≠ сохранённого — старый cid не берём, идём за новым через /hit
+  // ctype хранится вместе с cid и подхватывается только вместе с ним (переход каталог → товар внутри того же клика)
+  function cidSave(){ try{ localStorage.setItem('ztds_cid',gclid); localStorage.setItem('ztds_src',GCLID); localStorage.setItem('ztds_ctype',CTYPE); }catch(e){} }
+  try{ if(gclid) cidSave(); else { var sc=localStorage.getItem('ztds_cid')||'', ss=localStorage.getItem('ztds_src')||''; if(sc&&(!GCLID||GCLID===ss)){ gclid=sc; if(!CTYPE) CTYPE=localStorage.getItem('ztds_ctype')||''; } } }catch(e){}
+  var hitP=null;   // ожидание cid от /hit — форма ждёт его до 1.5 с, чтобы лид ушёл с cid
+  try{ var hitBody=JSON.stringify({kw:KW,keyword:KEYWORD,gclid:gclid,ads_gclid:GCLID,ctype:CTYPE,ref:document.referrer,q:location.search,page:location.href});
+  if(gclid){ navigator.sendBeacon(WORKER+'/hit', hitBody); }
+  else { hitP=fetch(WORKER+'/hit',{method:'POST',headers:{'Content-Type':'application/json'},body:hitBody})
+    .then(function(r){return r.json();}).then(function(j){ if(j&&j.cid){ gclid=j.cid; cidSave(); } return gclid; }).catch(function(){ return ''; }); }
+}catch(e){}
+
+  function rnd(a,b){ return a+Math.floor(Math.random()*(b-a+1)); }
+
+  // --- таймер акции (сохраняется между перезагрузками в пределах сессии) ---
+  // таймер только при ПЕРВОМ визите на сайт (флаг на домен); при перезагрузке/другом товаре — плашка «цена закреплена»
+  var first=true; try{ first=!localStorage.getItem('lp_seen'); localStorage.setItem('lp_seen','1'); }catch(e){}
+  if(qs.get('reset')==='1'){ first=true; try{ localStorage.removeItem('lp_seen'); localStorage.removeItem(SENT_KEY); }catch(e){} }   // ?reset=1 — для проверки
+  // v4 (12.09): таймер убран — скидка «держится, пока страница открыта»; при повторном визите — блок «мы сохранили вам цену»
+  if(!first){ document.getElementById('scarcity').style.display='none'; document.getElementById('kept').style.display='flex'; }
+
+  // --- остаток партии: стартует 38–57, убывает рывками в случайные моменты, с «pop»-анимацией и всплывашкой ---
+  var stock=rnd(38,57), stockMax=60, sn=document.getElementById('stockNum'), sn2=document.getElementById('stockNum2'), sb=document.getElementById('stockBar');
+  try{ var st=+localStorage.getItem('lp_stock'); if(st>6&&st<stock) stock=st; }catch(e){}   // остаток не растёт при перезагрузке
+  function rs(){ sn.textContent=stock; sn2.textContent=stock; sb.style.width=Math.max(6,(stock/stockMax)*100)+'%'; try{ localStorage.setItem('lp_stock',stock); }catch(e){} }
+  rs();
+  var L={"cc": "+386", "phMin": 8, "phMax": 8, "ph0": true, "fem": "a$", "t1m": "je pravkar oddal naročilo", "t1f": "je pravkar oddala naročilo", "t2m": "je pravkar naročil 2 pakiranji", "t2f": "je pravkar naročila 2 pakiranji", "agoMin": "pred {n} min", "agoH": "pred {n} h", "agoY": "včeraj", "agoD": "pred {n} dnevi", "names": ["Ana", "Marko", "Maja", "Janez", "Nina", "Peter", "Katja", "Andrej", "Špela", "Matej", "Mojca", "Boštjan", "Tjaša", "Jože", "Barbara", "Marjan", "Mateja", "Rok", "Irena", "Petra"], "cities": ["Ljubljana", "Maribor", "Celje", "Kranj", "Velenje", "Koper", "Novo mesto", "Ptuj", "Trbovlje", "Kamnik", "Jesenice", "Nova Gorica", "Domžale", "Škofja Loka", "Murska Sobota", "Izola", "Slovenj Gradec", "Krško", "Postojna", "Sežana"]};   // локаль тостов/дат/телефона (генерится сборкой из i18n)
+  var NAMES=L.names, CITIES=L.cities;
+  function drop(){
+    if(stock>6){
+      var d=Math.random()<.25?2:1; stock-=d; today+=d; rs(); rToday();
+      [sn,sn2].forEach(function(el){ el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); });
+    }
+    setTimeout(drop, rnd(18,55)*1000);
+  }
+  setTimeout(drop, rnd(7,14)*1000);
+
+
+  // --- FAQ ---
+  // «Как заказать?» — шаги заказа раскрываются по клику (17.09)
+  Array.prototype.forEach.call(document.querySelectorAll('.howq'),function(b){ b.addEventListener('click',function(){ var ol=b.nextElementSibling, o=b.getAttribute('aria-expanded')==='true'; b.setAttribute('aria-expanded',o?'false':'true'); if(ol) ol.hidden=o; }); });
+  document.querySelectorAll('.q button').forEach(function(btn){
+    btn.addEventListener('click',function(){ var q=btn.parentElement, a=q.querySelector('.ans');
+      if(q.classList.contains('open')){ q.classList.remove('open'); a.style.maxHeight=null; }
+      else { q.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; } });
+  });
+
+  // --- бумаги: клик открывает крупно ---
+  var lb=document.getElementById('certLb');
+  if(lb){ var big=lb.querySelector('.cert-big'), close=function(){ lb.hidden=true; big.innerHTML=''; };
+    Array.prototype.forEach.call(document.querySelectorAll('.certs .cert'),function(c){
+      c.addEventListener('click',function(){ big.innerHTML=''; var cl=c.cloneNode(true); cl.removeAttribute('data-i'); big.appendChild(cl); lb.hidden=false; }); });
+    lb.addEventListener('click',function(e){ if(e.target===lb||e.target.classList.contains('cert-x')) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!lb.hidden) close(); }); }
+
+  // --- отзывы: сначала 6, остальные по кнопке ---
+  var more=document.getElementById('rvMore'), MORE_TXT=more?more.textContent.trim():'';
+  if(more){
+    var showMore=function(){
+      var hid=Array.prototype.slice.call(document.querySelectorAll('.review.hid'),0,12);
+      hid.forEach(function(r){ r.classList.remove('hid'); });
+      var left=document.querySelectorAll('.review.hid').length;
+      if(left) more.textContent=MORE_TXT+' ('+left+')'; else more.style.display='none';
+    };
+    var left0=document.querySelectorAll('.review.hid').length;
+    if(!left0) more.style.display='none'; else more.textContent=MORE_TXT+' ('+left0+')';
+    more.addEventListener('click',showMore);
+  }
+
+  // --- отзывы: относительные даты (стабильные в рамках визита, свежие сверху)
+  var AGO=[14,42,96,180,260,420];   // первые шесть — свежие, дальше растёт плавно (отзывов теперь 72)
+  Array.prototype.forEach.call(document.querySelectorAll('.ago'),function(el){
+    var i=+el.getAttribute('data-i'), m=(i<AGO.length?AGO[i]:Math.round(600+i*i*3.2+i*180)), t;
+    var agoF=function(n,s){return s.indexOf('{n}')>=0?s.replace('{n}',n):n+s;};   // «vor {n} Min.» / «{n} min temu»
+    if(m<60) t=agoF(m,L.agoMin); else if(m<1440) t=agoF(Math.round(m/60),L.agoH);
+    else if(m<2880) t=L.agoY; else t=agoF(Math.round(m/1440),L.agoD);
+    el.textContent=t;
+  });
+
+  // --- «сегодня заказали N»: растёт по часам суток и подрастает вместе с убыванием остатка
+  // 13.10: «сегодня заказали» масштабируется от общего числа заказов гео (proof_n): ~1/300 в день, растёт к вечеру
+  var PROOF_N=+'3100'||0, todayBase=Math.max(25, Math.round(PROOF_N/300));
+  var today=Math.round(todayBase*(0.35+0.65*new Date().getHours()/23))+rnd(0,6);
+  function rToday(){ Array.prototype.forEach.call(document.querySelectorAll('.todayN'),function(el){ el.textContent=today; }); }
+  rToday();
+
+  // --- маска национального номера: код страны и допустимая длина берутся из локали (L.cc/L.phMin/L.phMax/L.ph0)
+  var CCD=L.cc.replace(/\D/g,'');
+  // --- RUEU: страна выбирается в форме — меняет код телефона, длину номера и цену (список стран подставляет сборка)
+  var CTY={}, CTYSEL=null;
+  function setCountry(cc){ var c=CTY[cc]; if(!c) return; CTYSEL=cc; L.cc=c.cc; L.phMin=c.phMin; L.phMax=c.phMax; L.ph0=c.ph0; CCD=c.cc.replace(/\D/g,''); NAT_BADGE=c.flag+' '+c.cc; if(INTL) setIntl(false);
+    Array.prototype.forEach.call(document.querySelectorAll('.p48'),function(el){ el.textContent=c.flag+' '+c.cc; });
+    var lf=document.getElementById('logoFlag'); if(lf&&c.flag) lf.textContent=c.flag;
+    Array.prototype.forEach.call(document.querySelectorAll('.price-new'),function(el){ el.textContent=c.price; });
+    Array.prototype.forEach.call(document.querySelectorAll('.price-old'),function(el){ el.textContent=c.old; });
+    Array.prototype.forEach.call(document.querySelectorAll('.order .p'),function(el){ if(el.firstChild) el.firstChild.nodeValue=c.price+' '; });
+    Array.prototype.forEach.call(document.querySelectorAll('.save-abs'),function(el){ el.style.display='none'; });
+    var sp=document.querySelector('#stickyCta .p'); if(sp&&sp.firstChild){ sp.firstChild.nodeValue=c.price; var sm=sp.querySelector('small'); if(sm) sm.textContent=c.old||''; }
+    Array.prototype.forEach.call(document.querySelectorAll('select.cty'),function(el){ el.value=cc; });
+    try{ localStorage.setItem('lp_cty',cc); }catch(e){} }
+  if(Object.keys(CTY).length){ var cty0=null; try{ cty0=localStorage.getItem('lp_cty'); }catch(e){}
+    var qcc=(qs.get('cc')||'').toUpperCase(); setCountry(CTY[qcc]?qcc:(CTY[cty0]?cty0:Object.keys(CTY)[0]));
+    Array.prototype.forEach.call(document.querySelectorAll('select.cty'),function(el){ el.addEventListener('change',function(){ setCountry(el.value);
+      Array.prototype.forEach.call(document.querySelectorAll('input[name=phone]'),function(ph){ ph.value=''; }); }); }); }
+  // 14.10: проверка номера «чтобы не терять заказы». 1) Нормализация без потери цифр: 00+код, повторённый код страны («43 664…» при
+  // широком окне длины AT/DE/IT — только если дальше идёт мобильная цифра), междугородный префикс (0; у Венгрии 06, у России/Казахстана 8,
+  // у Беларуси 80) снимается лишь когда номер набран целиком, а до того держится в поле — раньше «0630 123 4567» в HU теряло последнюю
+  // цифру: 0 снимался сразу, 10-я цифра обрезалась маской. 2) Жёсткий стоп (phBad) только для мусора. 3) Мягкое предупреждение (phWarn,
+  // оранжевым, отправку не блокирует): начало номера не из плана нумерации страны или маска отрезала лишние цифры.
+  var TRUNK={'36':['06'],'7':['8'],'375':['80']};
+  var MOB1={'43':'6','49':'1','39':'3'};
+  var PLAN={'48':/^(45|5[0137]|6[069]|7[2389]|88|1[2-8]|2[2-59]|3[2-4]|4[1-468]|5[2-69]|6[1-358]|67|7[1456]|8[1-79]|9[145])/,
+    '36':/^(1|20|30|31|50|70|2[2-9]|3[2-7]|4[24-9]|5[2-4679]|6[23689]|7[2-9]|8[02-5789]|9[2-69])/,'359':/^[2-9]/,'385':/^([1-5]|9)/,
+    '386':/^([1-57]|6[4589])/,'381':/^([1-3]|6)/,'387':/^([3-5]|6)/,'420':/^[2-7]/,'421':/^([2-5]|9)/,'40':/^[237]/,'34':/^[6-9]/,'351':/^[29]/,
+    '30':/^(2|69)/,'39':/^[03]/,'49':/^([2-9]|1[5-7])/,'43':/^[1-7]/,'33':/^[1-79]/,'370':/^[3-6]/,'371':/^[26]/,'372':/^([34567]|8[1-3])/,
+    '357':/^[29]/,'382':/^[2-46]/,'66':/^[2-9]/,'63':/^[2-9]/,'62':/^[2-8]/,'52':/^[2-9]/,'57':/^(3|60)/,'225':/^(0[157]|2[157])/,'90':/^[2-5]/,
+    '7':/^[3489]/,'375':/^[1-4]/,'380':/^[3-9]/};
+  // --- PHONE-LOGIC-START (02.11: «номер другой страны» — режим INTL: любой номер с кодом страны, 7–15 цифр, уходит как «+цифры»;
+  // лимиты AT 7 / DE 8 / TH 8 / PH 9 / RS до 10 — городские номера возрастной аудитории; маячок /phfail на заблокированную или обрезанную отправку)
+  var INTL=false, PH_CUT=false;
+  function intlDigits(v){ var x=v.replace(/\D/g,''); if(x.slice(0,2)==='00') x=x.slice(2); PH_CUT=x.length>15; return x.slice(0,15); }
+  function phDigits(v){ if(INTL) return intlDigits(v); var d=v.replace(/\D/g,''); PH_CUT=false;
+    if(d.slice(0,2+CCD.length)==='00'+CCD) d=d.slice(2+CCD.length);
+    if(d.slice(0,CCD.length)===CCD){ var rest=d.slice(CCD.length);
+      if(d.length>L.phMax || (rest.length>=Math.max(9,L.phMin) && (!MOB1[CCD]||rest[0]===MOB1[CCD]))) d=rest; }
+    var tr=TRUNK[CCD]||[], keep=0;
+    for(var i=0;i<tr.length;i++){ var t=tr[i];
+      if(d.length<t.length ? t.slice(0,d.length)===d : d.slice(0,t.length)===t){ if(d.length-t.length>=L.phMin) d=d.slice(t.length); else keep=t.length; break; } }
+    if(CCD==='36'&&d[0]==='6'&&d.length>=10) d=d.slice(1);   // венгры пишут «6 30 123 4567» вместо «06 30 …»: с 6 номера в HU не начинаются
+    if(!keep&&L.ph0&&d[0]==='0') d=d.slice(1);
+    if(d.length>L.phMax+keep) PH_CUT=true;
+    return d.slice(0,L.phMax+keep); }
+  function phWarn(d){ if(INTL) return PH_CUT || d[0]==='0'; var p=PLAN[CCD]; if(CCD==='36'&&d.length>=8){ var m=/^(20|30|31|50|70)/.test(d); if((d.length===9)!==m) return true; }   // HU: 9 цифр только у мобильных 20/30/31/50/70, у стационарных 8
+    return PH_CUT || SEQ6.test(d) || (!!p && d.length>=L.phMin && !p.test(d)); }
+  // группы по 3, но последняя не должна быть из одной цифры («664 123 456 7» → «664 123 4567»)
+  function phFmt(d){ if(INTL) return d?'+'+(d.match(/\d{1,3}/g)||[]).join(' '):''; var g=d.match(/\d{1,3}/g)||[]; if(g.length>1&&g[g.length-1].length===1){ g[g.length-2]+=g.pop(); } return g.join(' '); }
+  var SEQ7=/(0123456|1234567|2345678|3456789|4567890|9876543|8765432|7654321|6543210)/, SEQ6=/(012345|123456|234567|345678|456789|567890|987654|876543|765432|654321|543210)/;
+  function phBad(d){ return d.length<(INTL?7:L.phMin) || (INTL&&d[0]==='0') || /^(\d)\1+$/.test(d) || SEQ7.test(d); }   // жёстко: коротко, одна цифра, 7+ подряд
+  // чужой код, набранный с «+»/«00» (на AT-странице «+49…»), сам включает INTL; свой код («+43…») по-прежнему снимает маска
+  function foreignCode(v){ if(!/^\s*(\+|00)/.test(v)) return false; var x=v.replace(/\D/g,''); if(x.slice(0,2)==='00') x=x.slice(2); return x.length>0 && x.slice(0,CCD.length)!==CCD && CCD.indexOf(x)!==0; }
+  function phFail(reason,d){ try{ var b=JSON.stringify({kw:KW,reason:reason,len:d.length,first2:d.slice(0,2),intl:INTL?1:0,cc:L.cc}); if(navigator.sendBeacon) navigator.sendBeacon(WORKER+'/phfail',new Blob([b],{type:'text/plain'})); else fetch(WORKER+'/phfail',{method:'POST',headers:{'Content-Type':'text/plain'},body:b,keepalive:true}); }catch(e){} }
+  // 02.11: цифр больше, чем бывает в стране (маска обрезала бы), начало — код страны из нашего круга (Европа, СНГ, LATAM, ЮВА, США) и без ведущего 0 → это чужой номер без «+»: INTL, не резать
+  var DIAL=/^(1|7|2(0|7|1[236]|2[15]|34|54)|3[0-46-9]|4[13-9]|5[1-8]|6[0-6]|8[1246]|9[0-2]|35[1-9]|37[0-8]|38[0-9]|42[013]|593|96[6]|97[12])/;
+  function looksIntl(v){ var x=v.replace(/\D/g,''); if(x.slice(0,2)==='00') x=x.slice(2); return x.length>=10 && x.length<=15 && x[0]!=='0' && DIAL.test(x) && x.slice(0,CCD.length)!==CCD; }
+  // --- PHONE-LOGIC-END
+  var NAT_BADGE=NAT_BADGE||((document.querySelector('.p48')||{}).textContent||'').trim(), OTHER_BTN=document.querySelector('.ph-other'), OTHER_TXT=OTHER_BTN?OTHER_BTN.textContent:'', INTL_PH=OTHER_BTN?(OTHER_BTN.getAttribute('data-intl')||''):'', NAT_PH=((document.querySelector('input[name=phone]')||{}).placeholder||'');
+  function setIntl(on,focusEl){ INTL=!!on;
+    Array.prototype.forEach.call(document.querySelectorAll('.p48'),function(el){ el.textContent=INTL?'🌍':NAT_BADGE; });
+    Array.prototype.forEach.call(document.querySelectorAll('.ph-other'),function(el){ el.textContent=INTL?'↩ '+NAT_BADGE:OTHER_TXT; el.classList.toggle('on',INTL); });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name=phone]'),function(ph){ ph.value=''; ph.placeholder=INTL?INTL_PH:NAT_PH; ph.setAttribute('inputmode',INTL?'tel':'numeric'); ph.classList.remove('bad'); var fld=ph.closest('.phone-field'); fld.classList.remove('bad'); fld.classList.remove('warn'); });
+    if(focusEl) focusEl.focus(); }
+  Array.prototype.forEach.call(document.querySelectorAll('.ph-other'),function(b){ b.addEventListener('click',function(){ setIntl(!INTL,b.parentNode.querySelector('input[name=phone]')); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=phone]'), function(ph){
+    ph.addEventListener('input', function(){ if(!INTL&&foreignCode(ph.value)){ var keep=ph.value; setIntl(true); ph.value=keep; } var d=phDigits(ph.value); if(!INTL&&PH_CUT&&looksIntl(ph.value)){ var k2=ph.value; setIntl(true); ph.value=k2; d=phDigits(ph.value); } ph.value=phFmt(d); var fld=ph.closest('.phone-field'); fld.classList.remove('bad'); ph.classList.remove('bad'); fld.classList.toggle('warn',phWarn(d)); });
+  });
+
+  // --- «спасибо»: днём обещаем звонок ~15 минут, ночью (21:00–8:00) — завтра с 8:00 (?hour=N — для проверки)
+  var hh=qs.get('hour')!==null?+qs.get('hour'):new Date().getHours();
+  var whenTxt=(hh>=8&&hh<21)?'Svetovalec vas bo poklical s slovenske številke, običajno v 15 minutah, in potrdil naročilo.':'Svetovalec vas bo poklical jutri od 8:00 in potrdil naročilo.';
+  Array.prototype.forEach.call(document.querySelectorAll('.ok-when'),function(el){ el.textContent=whenTxt; });
+
+  // --- формы → воркер (одна страница = одна сеть, маршрут по KW) ---
+  Array.prototype.forEach.call(document.querySelectorAll('form.order-form'), function(f){
+    var nmF=f.querySelector('[name=name]'), phF=f.querySelector('[name=phone]');
+    nmF.addEventListener('blur', function(){ if(nmF.value.trim()) nmF.classList.toggle('bad', nmF.value.trim().length<2); });
+    phF.addEventListener('blur', function(){ if(phF.value.trim()){ var bad=phBad(phDigits(phF.value)); phF.classList.toggle('bad',bad); phF.closest('.phone-field').classList.toggle('bad',bad); } });
+    f.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var nm=f.querySelector('[name=name]'), ph=f.querySelector('[name=phone]'), btn=f.querySelector('button'), ok=f.parentNode.querySelector('.ok-msg');
+      var dg=phDigits(ph.value), cut=PH_CUT;
+      var badN=nm.value.trim().length<2, badP=phBad(dg);
+      nm.classList.toggle('bad',badN); ph.classList.toggle('bad',badP);
+      ph.closest('.phone-field').classList.toggle('bad',badP);
+      if(badN||badP){ if(badP) phFail(dg.length<(INTL?7:L.phMin)?'short':(INTL&&dg[0]==='0'?'zero':'junk'),dg); (badN?nm:ph).focus(); return; }
+      if(cut) phFail('cut',dg);   // маска отрезала лишние цифры — лид уходит, но длина/начало пишутся: мера «иностранных» номеров без INTL
+      if(sending) return; sending=true;
+      btn.disabled=true; btn.textContent='Pošiljanje…';
+      var d={kw:KW,page:location.href,name:nm.value.trim(),phone:INTL?'+'+dg:L.cc+' '+phFmt(dg),ctype:CTYPE};
+      if(CTYSEL) d.country=CTYSEL;
+      function send(){ d.gclid=gclid;
+        fetch(WORKER+'/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+          .then(function(r){return r.json();})
+          .then(function(){ markSent(); })
+          .catch(function(){ sending=false; btn.disabled=false; btn.textContent=BTN; alert('Napaka pri povezavi. Poskusite znova.'); }); }
+      if(!gclid&&hitP){ Promise.race([hitP,new Promise(function(r){setTimeout(r,3000);})]).then(send,send); } else send();   // 13.10: ждём cid до 3 с (было 1.5 — 44 лида из 1174 уходили без cid)
+    });
+  });
+
+  // 13.10: лид с этой страницы уже уходил менее суток назад — сразу показываем «спасибо», форму не даём (воркер такой повтор всё равно не отправит)
+  try{ var sentAt=+localStorage.getItem(SENT_KEY)||0; if(sentAt&&Date.now()-sentAt<86400000) markSent(); }catch(e){}
+
+  // 13.10: липкая кнопка (только телефон, см. CSS) — видна, когда ни одна форма не на экране; ведёт к форме в шапке
+  var sticky=document.getElementById('stickyCta'), cards=Array.prototype.slice.call(document.querySelectorAll('.form-card'));
+  if(sticky&&cards.length&&'IntersectionObserver' in window&&!document.body.classList.contains('sent')){
+    var visible={}; var io=new IntersectionObserver(function(ens){ ens.forEach(function(en){ visible[cards.indexOf(en.target)]=en.isIntersecting; });
+      var any=cards.some(function(c,i){ return visible[i]; }); sticky.classList.toggle('on', !any&&!document.body.classList.contains('sent')); },{threshold:0.1});
+    cards.forEach(function(c){ io.observe(c); });
+    sticky.querySelector('a').addEventListener('click',function(ev){ ev.preventDefault(); cards[0].scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(function(){ var i=cards[0].querySelector('[name=name]'); if(i) try{ i.focus({preventScroll:true}); }catch(e){} },600); });
+  }
+})();
+</script>
+</body>
+</html>
